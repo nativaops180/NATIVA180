@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="NATIVA 180 — Revenue Intelligence for LATAM. Convierte las señales de tus clientes en decisiones de retención, expansión y crecimiento.">
-<meta property="og:title" content="NATIVA 180 — Revenue Intelligence for LATAM">
-<meta property="og:description" content="La plataforma de Customer Success diseñada para la realidad cultural y comercial de Latinoamérica.">
-<title>NATIVA 180 — Revenue Intelligence for LATAM</title>
+<meta name="description" content="NATIVA InOps — Revenue Intelligence for LATAM. Convierte señales de clientes en decisiones accionables antes de que sea tarde.">
+<meta property="og:title" content="NATIVA InOps — Revenue Intelligence for LATAM">
+<meta property="og:description" content="La plataforma de inteligencia diseñada para la realidad cultural y comercial de Latinoamérica.">
+<title>NATIVA InOps — Revenue Intelligence for LATAM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
@@ -27,6 +27,8 @@
   --red:#E05252;
   --amber:#E67E22;
   --green:#27AE60;
+  --blue:#3b82f6;
+  --blue-light:#60a5fa;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--white);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -40,73 +42,89 @@ nav{position:fixed;top:0;width:100%;z-index:100;padding:1.2rem 3rem;display:flex
 .nav-links a:hover{color:var(--white)}
 .nav-cta{background:var(--indigo);color:var(--white);padding:0.55rem 1.3rem;border-radius:6px;font-size:0.875rem;font-weight:600;text-decoration:none;transition:all 0.2s}
 .nav-cta:hover{background:var(--indigo-light);transform:translateY(-1px)}
-@media(max-width:768px){
-  nav{padding:1rem 1.5rem}
-  .nav-links{display:none}
-}
+@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(75,63,160,0.25) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(13,158,138,0.12) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 20% 60%,rgba(201,168,76,0.08) 0%,transparent 60%);pointer-events:none}
-.hero-content{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto}
-.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(75,63,160,0.2);border:1px solid rgba(75,63,160,0.4);padding:0.4rem 1rem;border-radius:20px;font-size:0.78rem;color:var(--indigo-light);margin-bottom:1.5rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:600}
-.badge-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite}
+/* HERO — layout izquierda/derecha */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:9rem 4rem 5rem;max-width:1280px;margin:0 auto;position:relative}
+.hero-bg{position:fixed;inset:0;background:radial-gradient(ellipse 60% 50% at 20% 30%,rgba(75,63,160,0.18) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 80% 70%,rgba(13,158,138,0.08) 0%,transparent 60%);pointer-events:none;z-index:0}
+.hero-left{position:relative;z-index:1;display:flex;flex-direction:column;gap:1.6rem}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(75,63,160,0.2);border:1px solid rgba(75,63,160,0.4);padding:0.4rem 1rem;border-radius:20px;font-size:0.75rem;color:var(--indigo-light);letter-spacing:0.06em;text-transform:uppercase;font-weight:600;width:fit-content}
+.badge-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
-h1{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4vw,3.4rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;max-width:820px;margin:0 auto 1.5rem}
+h1{font-family:'Outfit',sans-serif;font-size:clamp(2rem,3.2vw,3.2rem);font-weight:800;line-height:1.08;letter-spacing:-0.03em}
 h1 em{font-style:normal;color:var(--gold)}
 h1 strong{font-style:normal;background:linear-gradient(135deg,var(--indigo-light),var(--teal-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:1.1rem;color:var(--gray);max-width:520px;margin:0 auto 2.5rem;line-height:1.8;font-weight:300}
+.hero-sub{font-size:1rem;color:var(--gray);max-width:460px;line-height:1.8;font-weight:300}
 .hero-sub span{color:var(--white);font-weight:500}
-.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
-.btn-primary{background:var(--indigo);color:var(--white);padding:0.85rem 2rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:0.95rem;transition:all 0.25s;display:inline-flex;align-items:center;gap:0.4rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--indigo);color:var(--white);padding:0.85rem 1.8rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:0.9rem;transition:all 0.25s;display:inline-flex;align-items:center;gap:0.4rem}
 .btn-primary:hover{background:var(--indigo-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(75,63,160,0.3)}
-.btn-secondary{background:transparent;color:var(--white);padding:0.85rem 2rem;border-radius:8px;font-weight:500;text-decoration:none;font-size:0.95rem;border:1px solid var(--border);transition:all 0.25s}
+.btn-secondary{background:transparent;color:var(--white);padding:0.85rem 1.8rem;border-radius:8px;font-weight:500;text-decoration:none;font-size:0.9rem;border:1px solid var(--border);transition:all 0.25s}
 .btn-secondary:hover{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.04)}
-.hero-stats{display:flex;gap:3rem;justify-content:center;padding-top:3rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:2rem}
-.stat-num{font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:700;color:var(--white)}
+.hero-stats{display:flex;gap:2rem;padding-top:1.5rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.stat-num{font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:700;color:var(--white)}
 .stat-num span{color:var(--gold)}
-.stat-lbl{font-size:0.78rem;color:var(--gray);margin-top:0.2rem}
+.stat-lbl{font-size:0.72rem;color:var(--gray);margin-top:0.15rem}
 
-/* DASHBOARD */
-.dashboard-wrap{width:100%;max-width:920px;margin:4rem auto 0}
-.dashboard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04)}
-.db-header{padding:1rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.5rem}
+/* DASHBOARD MOCKUP — lado derecho */
+.hero-right{position:relative;z-index:1}
+.dashboard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04)}
+.db-header{padding:0.9rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.4rem}
 .db-dot{width:10px;height:10px;border-radius:50%}
-.db-title{font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:700;color:var(--gray);margin-left:0.5rem;letter-spacing:0.08em;text-transform:uppercase}
-.db-body{padding:1.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-@media(max-width:600px){.db-body{grid-template-columns:repeat(2,1fr)}}
-.db-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:1rem}
-.db-label{font-size:0.68rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem}
-.db-val{font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800}
-.db-sub{font-size:0.72rem;color:var(--gray);margin-top:0.2rem}
-.db-bar{height:4px;background:rgba(255,255,255,0.06);border-radius:2px;margin-top:0.75rem;overflow:hidden}
-.db-bar-fill{height:100%;border-radius:2px}
+.db-title{font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;color:var(--gray);margin-left:0.5rem;letter-spacing:0.08em;text-transform:uppercase}
+.db-body{padding:1.25rem;display:flex;flex-direction:column;gap:1rem}
+.db-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem}
+.db-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:0.85rem}
+.db-label{font-size:0.65rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem}
+.db-val{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800}
+.db-sub{font-size:0.68rem;color:var(--gray);margin-top:0.15rem}
+.db-accounts{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;padding:0.85rem}
+.db-accounts-title{font-size:0.65rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem}
+.account-row{display:flex;align-items:center;justify-content:space-between;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.account-row:last-child{border-bottom:none}
+.account-name{font-size:0.8rem;color:var(--white);font-weight:500}
+.account-mrr{font-size:0.68rem;color:var(--gray);margin-top:1px}
+.temp-badge{font-size:0.62rem;padding:0.22rem 0.65rem;border-radius:100px;font-weight:700;letter-spacing:0.04em}
+.t-verde{background:rgba(39,174,96,0.15);color:#27AE60}
+.t-amarillo{background:rgba(230,126,34,0.15);color:#E67E22}
+.t-rojo{background:rgba(224,82,82,0.15);color:#E05252}
+.t-expansion{background:rgba(13,158,138,0.15);color:var(--teal-light)}
 
 /* SECTIONS */
 section{padding:6rem 2rem}
 .container{max-width:1100px;margin:0 auto}
 .section-label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
-.section-title{font-family:'Outfit',sans-serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;max-width:680px;margin-bottom:1.25rem}
+.section-title{font-family:'Outfit',sans-serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:800;line-height:1.12;letter-spacing:-0.02em;max-width:680px;margin-bottom:1.25rem}
 .section-title em{font-style:normal;color:var(--gold)}
-.section-sub{color:var(--gray);font-size:0.975rem;line-height:1.8;max-width:520px;font-weight:300}
+.section-sub{color:var(--gray);font-size:0.975rem;line-height:1.8;max-width:540px;font-weight:300}
 
-/* PROBLEM */
-.problem-section{background:rgba(192,57,43,0.04);border-top:1px solid rgba(192,57,43,0.12);border-bottom:1px solid rgba(192,57,43,0.12)}
+/* PROBLEMA */
+.problem-section{background:rgba(192,57,43,0.04);border-top:1px solid rgba(192,57,43,0.1);border-bottom:1px solid rgba(192,57,43,0.1)}
 .problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;margin-top:3rem}
 .problem-card{background:rgba(255,255,255,0.02);border:1px solid rgba(192,57,43,0.15);border-radius:12px;padding:1.5rem;transition:border-color 0.3s}
 .problem-card:hover{border-color:rgba(192,57,43,0.3)}
-.problem-num{font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:700;color:rgba(192,57,43,0.35);margin-bottom:0.75rem}
+.problem-num{font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:700;color:rgba(192,57,43,0.3);margin-bottom:0.75rem}
 .problem-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:0.5rem}
 .problem-card p{font-size:0.85rem;color:var(--gray);line-height:1.7}
 
-/* FEATURES */
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
-.feature-card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all 0.3s}
-.feature-card:hover{border-color:rgba(75,63,160,0.4);background:rgba(75,63,160,0.06);transform:translateY(-3px)}
-.feature-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.25rem}
-.feature-card h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:0.6rem}
-.feature-card p{font-size:0.85rem;color:var(--gray);line-height:1.7}
-.feature-tag{display:inline-block;font-size:0.68rem;font-weight:700;padding:0.22rem 0.65rem;border-radius:4px;margin-top:1rem;letter-spacing:0.07em;text-transform:uppercase}
+/* CAPAS */
+.capas-section{border-top:1px solid var(--border)}
+.capas-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem}
+.capa-card{border-radius:16px;padding:2.25rem;border:1px solid var(--border);transition:all 0.3s}
+.capa-1{background:linear-gradient(135deg,rgba(75,63,160,0.1) 0%,rgba(75,63,160,0.04) 100%);border-color:rgba(75,63,160,0.2)}
+.capa-1:hover{border-color:rgba(75,63,160,0.4)}
+.capa-2{background:linear-gradient(135deg,rgba(13,158,138,0.1) 0%,rgba(13,158,138,0.04) 100%);border-color:rgba(13,158,138,0.2)}
+.capa-2:hover{border-color:rgba(13,158,138,0.4)}
+.capa-badge{display:inline-block;font-size:0.68rem;font-weight:700;padding:0.25rem 0.75rem;border-radius:100px;margin-bottom:1.25rem;letter-spacing:0.08em;text-transform:uppercase}
+.capa-1 .capa-badge{background:rgba(75,63,160,0.2);color:var(--indigo-light);border:1px solid rgba(75,63,160,0.3)}
+.capa-2 .capa-badge{background:rgba(13,158,138,0.15);color:var(--teal-light);border:1px solid rgba(13,158,138,0.25)}
+.capa-title{font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:0.75rem}
+.capa-desc{font-size:0.9rem;color:var(--gray);line-height:1.75;margin-bottom:1.5rem;font-weight:300}
+.capa-features{display:flex;flex-direction:column;gap:0.65rem}
+.capa-feature{display:flex;align-items:flex-start;gap:0.65rem;font-size:0.85rem;color:var(--gray)}
+.capa-feature::before{content:'→';font-weight:700;flex-shrink:0;margin-top:1px}
+.capa-1 .capa-feature::before{color:var(--indigo-light)}
+.capa-2 .capa-feature::before{color:var(--teal)}
 
 /* ENGINE */
 .engine-section{background:linear-gradient(180deg,var(--bg) 0%,rgba(75,63,160,0.07) 50%,var(--bg) 100%)}
@@ -118,74 +136,77 @@ section{padding:6rem 2rem}
 .rule-desc{font-size:0.82rem;color:var(--gray);line-height:1.65;margin-bottom:0.75rem}
 .rule-prob{font-size:0.73rem;font-weight:700;letter-spacing:0.05em}
 
-/* JOURNEY */
-.journey-section{text-align:center}
-.journey-row{display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-top:3rem;flex-wrap:wrap}
-.journey-step{text-align:center;padding:1rem 1.4rem;border-radius:10px;border:1px solid var(--border);transition:all 0.2s;min-width:120px}
-.journey-step:hover{transform:translateY(-2px)}
-.journey-step-label{font-size:0.68rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3rem}
-.journey-step-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem}
-.journey-arrow{color:var(--gray);font-size:1.1rem}
-
-/* MODULES */
-.modules-section{background:rgba(255,255,255,0.01)}
-.modules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1rem;margin-top:3rem}
-.module{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:12px;padding:1.25rem;transition:all 0.25s}
-.module:hover{border-color:rgba(13,158,138,0.35);background:rgba(13,158,138,0.04);transform:translateY(-2px)}
-.module-num{font-family:'Outfit',sans-serif;font-size:0.68rem;font-weight:700;color:var(--gray);letter-spacing:0.1em;margin-bottom:0.5rem}
-.module-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.92rem;margin-bottom:0.35rem}
-.module-desc{font-size:0.78rem;color:var(--gray);line-height:1.55}
+/* INTEGRACIONES */
+.int-section{border-top:1px solid var(--border)}
+.int-grid{display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:2.5rem}
+.int-tag{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:100px;padding:0.5rem 1.1rem;font-size:0.8rem;color:var(--gray);display:flex;align-items:center;gap:0.5rem;transition:all 0.2s}
+.int-tag:hover{border-color:rgba(75,63,160,0.35);color:var(--white)}
+.int-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.f1{background:var(--gold)}
+.f2{background:var(--teal)}
+.f3{background:var(--gray)}
+.int-legend{display:flex;gap:1.5rem;margin-top:1.5rem;flex-wrap:wrap}
+.int-legend-item{display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--gray)}
 
 /* CTA */
-.cta-section{text-align:center;padding:7rem 2rem}
+.cta-section{text-align:center;padding:7rem 2rem;border-top:1px solid var(--border)}
 .cta-box{background:linear-gradient(135deg,rgba(75,63,160,0.14),rgba(13,158,138,0.07));border:1px solid rgba(75,63,160,0.22);border-radius:24px;padding:4rem 2rem;max-width:680px;margin:0 auto}
-.cta-box h2{font-family:'Outfit',sans-serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:800;margin-bottom:1rem;letter-spacing:-0.02em;line-height:1.2}
+.cta-box h2{font-family:'Outfit',sans-serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:800;margin-bottom:1rem;letter-spacing:-0.02em;line-height:1.2}
 .cta-box h2 em{font-style:normal;color:var(--gold)}
 .cta-box p{color:var(--gray);margin-bottom:2rem;font-size:0.975rem;line-height:1.75;font-weight:300}
 .cta-note{font-size:0.78rem;color:var(--gray);margin-top:1rem;opacity:0.7}
 
 /* FOOTER */
-footer{border-top:1px solid var(--border);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer{border-top:1px solid var(--border);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;max-width:1280px;margin:0 auto}
 .footer-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;color:var(--white)}
 .footer-logo span{color:var(--gold)}
-.footer-mantra{font-size:0.8rem;color:var(--gray)}
-.footer-built{font-size:0.73rem;color:rgba(139,139,170,0.45)}
+.footer-email{font-size:0.8rem;color:var(--gray)}
+.footer-mantra{font-size:0.75rem;color:rgba(139,139,170,0.5);letter-spacing:0.06em}
 
 /* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.hero-content>*{animation:fadeUp 0.7s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-left>*{animation:fadeUp 0.6s ease both}
 .hero-badge{animation-delay:0.1s}
 h1{animation-delay:0.2s}
 .hero-sub{animation-delay:0.3s}
 .hero-btns{animation-delay:0.4s}
 .hero-stats{animation-delay:0.5s}
-.dashboard-wrap{animation-delay:0.6s}
+.hero-right{animation:fadeUp 0.8s ease 0.3s both}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:8rem 1.5rem 4rem;gap:3rem}
+  .capas-grid{grid-template-columns:1fr}
+  section{padding:4rem 1.5rem}
+  footer{padding:2rem 1.5rem}
+}
 </style>
 </head>
 <body>
 
+<div class="hero-bg"></div>
+
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo">NATIVA <span>180</span></a>
+  <a href="#" class="logo">NATIVA <span>InOps</span></a>
   <ul class="nav-links">
-    <li><a href="#producto">Producto</a></li>
+    <li><a href="#capas">Solución</a></li>
     <li><a href="#engine">Decision Engine</a></li>
-    <li><a href="#modulos">Módulos</a></li>
-    <li><a href="#beta">Academy</a></li>
+    <li><a href="#integraciones">Integraciones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <a href="#beta" class="nav-cta">Solicitar acceso beta →</a>
+  <a href="mailto:nativaops180@gmail.com" class="nav-cta">Agendar llamada →</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="inicio">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
+<div class="hero">
+  <div class="hero-left">
     <div class="hero-badge"><div class="badge-dot"></div>🌎 Revenue Intelligence · LATAM</div>
-    <h1>El churn no empieza<br>cuando el cliente <em>cancela.</em><br>Empieza cuando nadie<br><strong>lo acompañó.</strong></h1>
-    <p class="hero-sub">NATIVA 180 convierte las señales de tus clientes en decisiones de <span>retención, expansión y crecimiento</span> — antes de que sea tarde.</p>
+    <h1>El churn no empieza cuando el cliente <em>cancela.</em><br>Empieza cuando nadie<br><strong>lo vio venir.</strong></h1>
+    <p class="hero-sub">NATIVA InOps convierte señales dispersas en decisiones accionables — con <span>inteligencia diseñada para la realidad cultural y comercial de Latinoamérica.</span></p>
     <div class="hero-btns">
-      <a href="#beta" class="btn-primary">Solicitar acceso beta →</a>
-      <a href="#producto" class="btn-secondary">Ver cómo funciona</a>
+      <a href="mailto:nativaops180@gmail.com" class="btn-primary">Agendar llamada →</a>
+      <a href="#capas" class="btn-secondary">Ver cómo funciona</a>
     </div>
     <div class="hero-stats">
       <div>
@@ -193,126 +214,129 @@ h1{animation-delay:0.2s}
         <div class="stat-lbl">días antes · predicción de churn</div>
       </div>
       <div>
-        <div class="stat-num"><span>10</span></div>
-        <div class="stat-lbl">módulos integrados</div>
+        <div class="stat-num"><span>2</span></div>
+        <div class="stat-lbl">capas · CS Builder + Revenue Intel</div>
       </div>
       <div>
-        <div class="stat-num"><span>3</span></div>
-        <div class="stat-lbl">países LATAM en beta</div>
+        <div class="stat-num"><span>LATAM</span></div>
+        <div class="stat-lbl">diseñado para nuestra región</div>
       </div>
     </div>
+  </div>
 
-    <!-- DASHBOARD MOCKUP -->
-    <div class="dashboard-wrap">
-      <div class="dashboard">
-        <div class="db-header">
-          <div class="db-dot" style="background:#FF5F57"></div>
-          <div class="db-dot" style="background:#FFBD2E;margin-left:4px"></div>
-          <div class="db-dot" style="background:#28CA41;margin-left:4px"></div>
-          <span class="db-title" style="margin-left:12px">NATIVA 180 · Decision Engine™</span>
-        </div>
-        <div class="db-body">
+  <div class="hero-right">
+    <div class="dashboard">
+      <div class="db-header">
+        <div class="db-dot" style="background:#FF5F57"></div>
+        <div class="db-dot" style="background:#FFBD2E;margin-left:4px"></div>
+        <div class="db-dot" style="background:#28CA41;margin-left:4px"></div>
+        <span class="db-title">NATIVA InOps · Decision Engine™</span>
+      </div>
+      <div class="db-body">
+        <div class="db-row">
           <div class="db-card">
             <div class="db-label">Health Score</div>
-            <div class="db-val" style="color:var(--teal)">78<span style="font-size:0.9rem;color:var(--gray)">/100</span></div>
+            <div class="db-val" style="color:var(--teal)">84</div>
             <div class="db-sub" style="color:var(--teal)">● Saludable</div>
-            <div class="db-bar"><div class="db-bar-fill" style="width:78%;background:var(--teal)"></div></div>
           </div>
           <div class="db-card">
             <div class="db-label">Churn Risk</div>
-            <div class="db-val" style="color:var(--red)">Alto</div>
-            <div class="db-sub" style="color:var(--red)">⚠ 3 cuentas en riesgo</div>
-            <div class="db-bar"><div class="db-bar-fill" style="width:72%;background:var(--red)"></div></div>
+            <div class="db-val" style="color:var(--red)">3</div>
+            <div class="db-sub" style="color:var(--red)">⚠ Cuentas en riesgo</div>
           </div>
           <div class="db-card">
-            <div class="db-label">Expansion Potential</div>
-            <div class="db-val" style="color:var(--gold)">Alto</div>
-            <div class="db-sub" style="color:var(--gold)">↑ 5 oportunidades</div>
-            <div class="db-bar"><div class="db-bar-fill" style="width:85%;background:var(--gold)"></div></div>
+            <div class="db-label">Expansión</div>
+            <div class="db-val" style="color:var(--gold)">5</div>
+            <div class="db-sub" style="color:var(--gold)">↑ Oportunidades</div>
           </div>
-          <div class="db-card">
-            <div class="db-label">NPS Score</div>
-            <div class="db-val" style="color:var(--teal)">62</div>
-            <div class="db-sub" style="color:var(--teal)">+18 vs trimestre anterior</div>
-            <div class="db-bar"><div class="db-bar-fill" style="width:62%;background:var(--teal)"></div></div>
+        </div>
+        <div class="db-accounts">
+          <div class="db-accounts-title">Cartera · Temperatura actual</div>
+          <div class="account-row">
+            <div><div class="account-name">Empresa A</div><div class="account-mrr">MRR $12,000</div></div>
+            <span class="temp-badge t-expansion">💰 Expansión</span>
           </div>
-          <div class="db-card">
-            <div class="db-label">QBR Generado</div>
-            <div class="db-val" style="font-size:1rem;padding-top:0.2rem">Q2 2025</div>
-            <div class="db-sub" style="color:var(--teal)">✓ Listo para compartir</div>
+          <div class="account-row">
+            <div><div class="account-name">Empresa B</div><div class="account-mrr">MRR $8,500</div></div>
+            <span class="temp-badge t-verde">🟢 Verde</span>
           </div>
-          <div class="db-card">
-            <div class="db-label">Sales-CS Bridge</div>
-            <div class="db-val" style="font-size:1rem;padding-top:0.2rem">2 alertas</div>
-            <div class="db-sub" style="color:var(--red)">⚡ Gap detectado</div>
+          <div class="account-row">
+            <div><div class="account-name">Empresa C</div><div class="account-mrr">MRR $15,000</div></div>
+            <span class="temp-badge t-amarillo">🟡 Amarillo</span>
+          </div>
+          <div class="account-row">
+            <div><div class="account-name">Empresa D</div><div class="account-mrr">MRR $6,200</div></div>
+            <span class="temp-badge t-rojo">🔴 Rojo</span>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- PROBLEM -->
+<!-- PROBLEMA -->
 <section class="problem-section" id="problema">
   <div class="container">
     <div class="section-label">El problema</div>
     <div class="section-title">La experiencia del cliente en LATAM está <em>rota.</em></div>
-    <p class="section-sub">No por el producto. Por la desconexión entre quién vende y quién retiene — y por herramientas que no entienden cómo hacemos negocios aquí.</p>
+    <p class="section-sub">No por el producto. Por la desconexión entre señales y decisiones — y por herramientas que no entienden cómo hacemos negocios aquí.</p>
     <div class="problem-grid">
       <div class="problem-card">
         <div class="problem-num">01</div>
-        <h4>El gap ventas → CS</h4>
-        <p>El vendedor promete. CS no puede cumplir. El cliente se va antes de terminar el onboarding.</p>
+        <h4>CS sin estructura</h4>
+        <p>Empresas que quieren construir Customer Success pero no saben por dónde empezar. Sin perfiles, sin métricas, sin roadmap.</p>
       </div>
       <div class="problem-card">
         <div class="problem-num">02</div>
         <h4>Churn invisible</h4>
-        <p>No saben que un cliente se va hasta que ya se fue. Sin señales, sin sistema, sin tiempo de reaccionar.</p>
+        <p>No saben que un cliente se va hasta que ya se fue. Las señales estaban ahí — en tickets, emails, WhatsApp — pero nadie las conectó.</p>
       </div>
       <div class="problem-card">
         <div class="problem-num">03</div>
-        <h4>Software que no entiende LATAM</h4>
-        <p>Plataformas globales traducidas al español que ignoran el contexto cultural, relacional y emocional de la región.</p>
+        <h4>El gap ventas → CS</h4>
+        <p>El vendedor promete. CS no puede cumplir. El cliente se va antes de terminar el onboarding. Nadie documentó cómo opera el cliente en realidad.</p>
       </div>
       <div class="problem-card">
         <div class="problem-num">04</div>
-        <h4>CS sin estructura</h4>
-        <p>Equipos trabajando con hojas de cálculo y buena voluntad. Sin playbooks, sin métricas, sin sistema real.</p>
+        <h4>Software que no entiende LATAM</h4>
+        <p>Plataformas globales traducidas al español que ignoran el contexto cultural, relacional y emocional de la región.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section id="producto">
+<!-- CAPAS -->
+<section class="capas-section" id="capas">
   <div class="container">
-    <div class="section-label">Por qué NATIVA 180</div>
-    <div class="section-title" style="max-width:720px">Una capa de inteligencia <em>encima</em> de tus sistemas actuales.</div>
-    <p class="section-sub">No reemplaza tu CRM. Se sienta encima de Salesforce, HubSpot, Zendesk y WhatsApp — lee todas las señales — y te dice exactamente qué hacer.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon" style="background:rgba(192,57,43,0.12)">🧠</div>
-        <h3>Decision Engine™</h3>
-        <p>6 reglas de inteligencia que clasifican cada cuenta en tiempo real. Churn activo, riesgo oculto, cuenta sana, oportunidad de expansión. Acciones automáticas para cada escenario.</p>
-        <span class="feature-tag" style="background:rgba(192,57,43,0.12);color:#E05252">Core Feature</span>
+    <div class="section-label">La solución</div>
+    <div class="section-title">Dos capas. <em>Una plataforma.</em></div>
+    <p class="section-sub">NATIVA InOps se adapta a donde estás hoy — desde construir tu primer equipo de CS hasta analizar inteligentemente toda tu cartera de clientes.</p>
+    <div class="capas-grid">
+      <div class="capa-card capa-1">
+        <span class="capa-badge">Capa 1</span>
+        <div class="capa-title">CS Builder</div>
+        <p class="capa-desc">Consultoría automatizada para empresas que quieren construir su departamento de Customer Success desde cero — con inteligencia, no con intuición.</p>
+        <div class="capa-features">
+          <div class="capa-feature">Diagnóstico de madurez CS por industria y tamaño</div>
+          <div class="capa-feature">Diseño de equipo: perfiles, roles y skills para LATAM</div>
+          <div class="capa-feature">Rangos salariales por país, rol y etapa de empresa</div>
+          <div class="capa-feature">Métricas, KPIs y customer journey inicial</div>
+          <div class="capa-feature">Playbooks base generados automáticamente</div>
+          <div class="capa-feature">Roadmap de implementación 30-60-90 días</div>
+        </div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background:rgba(75,63,160,0.12)">🔗</div>
-        <h3>Sales-CS Bridge</h3>
-        <p>Conecta lo que prometió el vendedor con lo que puede entregar el equipo de CS. Alinea expectativas desde el día 0 y elimina el churn temprano causado por promesas incumplidas.</p>
-        <span class="feature-tag" style="background:rgba(75,63,160,0.12);color:var(--indigo-light)">Diferenciador único</span>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background:rgba(201,168,76,0.12)">🌎</div>
-        <h3>Inteligencia Cultural LATAM</h3>
-        <p>Interpreta contexto relacional y señales conversacionales propias de LATAM. Entiende cómo se comunican tus clientes — no solo lo que dicen, sino lo que realmente quieren decir.</p>
-        <span class="feature-tag" style="background:rgba(201,168,76,0.12);color:var(--gold)">Nativo LATAM</span>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background:rgba(13,158,138,0.12)">📊</div>
-        <h3>QBR Generator</h3>
-        <p>Reportes trimestrales auto-generados por cliente. Narrativa + datos. Listos para presentar sin preparación manual. Tu equipo CS dejará de vivir en PowerPoint.</p>
-        <span class="feature-tag" style="background:rgba(13,158,138,0.12);color:var(--teal)">Automatización</span>
+      <div class="capa-card capa-2">
+        <span class="capa-badge">Capa 2</span>
+        <div class="capa-title">Revenue Intelligence</div>
+        <p class="capa-desc">Motor de inteligencia que analiza señales de tus clientes, clasifica cuentas por temperatura y genera decisiones accionables — con contexto cultural LATAM integrado.</p>
+        <div class="capa-features">
+          <div class="capa-feature">Clasificación de cuentas en tiempo real por temperatura</div>
+          <div class="capa-feature">Predicción de churn 60–90 días antes</div>
+          <div class="capa-feature">Detección de oportunidades de expansión</div>
+          <div class="capa-feature">Análisis de sentimiento con contexto cultural por país</div>
+          <div class="capa-feature">QBR Generator automático por cliente</div>
+          <div class="capa-feature">Next Best Action para cada cuenta</div>
+        </div>
       </div>
     </div>
   </div>
@@ -322,121 +346,99 @@ h1{animation-delay:0.2s}
 <section class="engine-section" id="engine">
   <div class="container">
     <div class="section-label">Decision Engine™</div>
-    <div class="section-title">6 reglas. Señales en tiempo real.<br>Acciones <em>antes</em> de que sea tarde.</div>
-    <p class="section-sub">El cerebro de NATIVA 180. Detecta, clasifica y activa — automáticamente.</p>
+    <div class="section-title">6 temperaturas. Señales en tiempo real.<br>Acciones <em>antes</em> de que sea tarde.</div>
+    <p class="section-sub">El cerebro de NATIVA InOps. Detecta, clasifica y activa — automáticamente.</p>
     <div class="rules-grid">
-      <div class="rule-card" style="background:rgba(224,82,82,0.06);border-color:rgba(224,82,82,0.2)">
-        <div class="rule-badge">🔴</div>
-        <div class="rule-name">Churn Activo</div>
-        <div class="rule-desc">Uso en descenso + tickets en aumento + sentimiento negativo detectado.</div>
-        <div class="rule-prob" style="color:var(--red)">Prob. 80% · Intervención &lt; 24h</div>
-      </div>
-      <div class="rule-card" style="background:rgba(230,126,34,0.06);border-color:rgba(230,126,34,0.2)">
-        <div class="rule-badge">🟡</div>
-        <div class="rule-name">Riesgo Latente</div>
-        <div class="rule-desc">Engagement bajo + sin contacto reciente + silencio administrativo.</div>
-        <div class="rule-prob" style="color:var(--amber)">Prob. 60% · Check-in automático</div>
-      </div>
-      <div class="rule-card" style="background:rgba(39,174,96,0.06);border-color:rgba(39,174,96,0.2)">
+      <div class="rule-card" style="background:rgba(39,174,96,0.05);border-color:rgba(39,174,96,0.2)">
         <div class="rule-badge">🟢</div>
-        <div class="rule-name">Cuenta Sana</div>
-        <div class="rule-desc">Uso constante + bajo soporte + señales positivas en comunicaciones.</div>
-        <div class="rule-prob" style="color:var(--green)">Prob. 70% · Identificar expansión</div>
+        <div class="rule-name">Verde — Cuenta sana</div>
+        <div class="rule-desc">Uso constante + bajo soporte + señales positivas. Momento de identificar expansión.</div>
+        <div class="rule-prob" style="color:var(--green)">Expansión potencial · Alta</div>
       </div>
-      <div class="rule-card" style="background:rgba(13,158,138,0.06);border-color:rgba(13,158,138,0.2)">
+      <div class="rule-card" style="background:rgba(13,158,138,0.05);border-color:rgba(13,158,138,0.2)">
         <div class="rule-badge">💚</div>
-        <div class="rule-name">Oportunidad de Upsell</div>
+        <div class="rule-name">Verde+ — Lista para crecer</div>
         <div class="rule-desc">Uso creciente + nuevos usuarios activos + engagement sostenido.</div>
         <div class="rule-prob" style="color:var(--teal)">Prob. 85% · Propuesta automática</div>
       </div>
-      <div class="rule-card" style="background:rgba(100,0,0,0.12);border-color:rgba(139,0,0,0.25)">
+      <div class="rule-card" style="background:rgba(230,126,34,0.05);border-color:rgba(230,126,34,0.2)">
+        <div class="rule-badge">🟡</div>
+        <div class="rule-name">Amarillo — Riesgo latente</div>
+        <div class="rule-desc">Engagement bajo + sin contacto reciente + silencio administrativo.</div>
+        <div class="rule-prob" style="color:var(--amber)">Prob. 60% · Check-in automático</div>
+      </div>
+      <div class="rule-card" style="background:rgba(224,82,82,0.05);border-color:rgba(224,82,82,0.2)">
+        <div class="rule-badge">🔴</div>
+        <div class="rule-name">Rojo — Churn activo</div>
+        <div class="rule-desc">Uso en descenso + tickets críticos + sentimiento negativo detectado.</div>
+        <div class="rule-prob" style="color:var(--red)">Prob. 80% · Intervención &lt; 24h</div>
+      </div>
+      <div class="rule-card" style="background:rgba(100,0,0,0.1);border-color:rgba(139,0,0,0.2)">
         <div class="rule-badge">⚫</div>
-        <div class="rule-name">Cuenta en Crisis</div>
+        <div class="rule-name">Negro — Cuenta en crisis</div>
         <div class="rule-desc">Quejas críticas + cancelación mencionada + inactividad total registrada.</div>
         <div class="rule-prob" style="color:#FF6B6B">Prob. 95% · Escalamiento directivo</div>
       </div>
       <div class="rule-card" style="background:rgba(201,168,76,0.07);border-color:rgba(201,168,76,0.28)">
         <div class="rule-badge">🔥</div>
         <div class="rule-name" style="color:var(--gold)">Riesgo Oculto ★</div>
-        <div class="rule-desc">Uso alto <strong style="color:var(--white)">pero</strong> señales relacionales negativas. El cliente que ningún dashboard tradicional detecta.</div>
-        <div class="rule-prob" style="color:var(--gold)">Prob. 75% · Solo NATIVA 180 lo ve</div>
+        <div class="rule-desc">Uso alto <strong style="color:var(--white)">pero</strong> señales relacionales negativas. El cliente que ningún dashboard detecta.</div>
+        <div class="rule-prob" style="color:var(--gold)">Prob. 75% · Solo NATIVA InOps lo ve</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- JOURNEY -->
-<section class="journey-section">
+<!-- INTEGRACIONES -->
+<section class="int-section" id="integraciones">
   <div class="container">
-    <div class="section-label" style="text-align:center">El journey completo</div>
-    <div class="section-title" style="margin:0 auto 1rem;text-align:center;max-width:100%">De prospecto a <em>Socio.</em></div>
-    <p class="section-sub" style="margin:0 auto 0;text-align:center;max-width:480px">NATIVA 180 acompaña y acelera cada etapa del ciclo de vida de tu cliente.</p>
-    <div class="journey-row">
-      <div class="journey-step" style="border-color:rgba(192,57,43,0.3)">
-        <div class="journey-step-label">Fase 1</div>
-        <div class="journey-step-name" style="color:var(--red)">Onboarding</div>
-      </div>
-      <div class="journey-arrow">→</div>
-      <div class="journey-step" style="border-color:rgba(230,126,34,0.3)">
-        <div class="journey-step-label">Fase 2</div>
-        <div class="journey-step-name" style="color:var(--amber)">Adopción</div>
-      </div>
-      <div class="journey-arrow">→</div>
-      <div class="journey-step" style="border-color:rgba(75,63,160,0.3)">
-        <div class="journey-step-label">Fase 3</div>
-        <div class="journey-step-name" style="color:var(--indigo-light)">Expansión</div>
-      </div>
-      <div class="journey-arrow">→</div>
-      <div class="journey-step" style="border-color:rgba(13,158,138,0.3)">
-        <div class="journey-step-label">Fase 4</div>
-        <div class="journey-step-name" style="color:var(--teal)">Renovación</div>
-      </div>
-      <div class="journey-arrow">→</div>
-      <div class="journey-step" style="border-color:rgba(201,168,76,0.5);background:rgba(201,168,76,0.06)">
-        <div class="journey-step-label">Destino</div>
-        <div class="journey-step-name" style="color:var(--gold)">★ Socio</div>
-      </div>
+    <div class="section-label">Integraciones</div>
+    <div class="section-title">No reemplaza tus sistemas.<br><em>Se sienta encima.</em></div>
+    <p class="section-sub">NATIVA InOps se conecta vía API a los sistemas que ya usas. El cliente no cambia nada — NATIVA lee las señales y devuelve decisiones.</p>
+    <div class="int-grid">
+      <div class="int-tag"><span class="int-dot f1"></span>Notion</div>
+      <div class="int-tag"><span class="int-dot f2"></span>HubSpot</div>
+      <div class="int-tag"><span class="int-dot f2"></span>Salesforce</div>
+      <div class="int-tag"><span class="int-dot f2"></span>Zendesk</div>
+      <div class="int-tag"><span class="int-dot f2"></span>Slack</div>
+      <div class="int-tag"><span class="int-dot f2"></span>Google Workspace</div>
+      <div class="int-tag"><span class="int-dot f2"></span>Looker Studio</div>
+      <div class="int-tag"><span class="int-dot f2"></span>META Business Suite</div>
+      <div class="int-tag"><span class="int-dot f3"></span>Pipedrive</div>
+      <div class="int-tag"><span class="int-dot f3"></span>Zoho CRM</div>
+      <div class="int-tag"><span class="int-dot f3"></span>Microsoft 365</div>
+      <div class="int-tag"><span class="int-dot f3"></span>Intercom</div>
+      <div class="int-tag"><span class="int-dot f3"></span>Monday.com</div>
+      <div class="int-tag"><span class="int-dot f3"></span>Jira</div>
+      <div class="int-tag"><span class="int-dot f3"></span>Stripe / Conekta</div>
+      <div class="int-tag"><span class="int-dot f3"></span>LinkedIn</div>
+      <div class="int-tag"><span class="int-dot f3"></span>TikTok for Business</div>
+    </div>
+    <div class="int-legend">
+      <div class="int-legend-item"><span class="int-dot f1" style="display:inline-block"></span>Fase 1 — Actual</div>
+      <div class="int-legend-item"><span class="int-dot f2" style="display:inline-block"></span>Fase 2 — Prioritario</div>
+      <div class="int-legend-item"><span class="int-dot f3" style="display:inline-block"></span>Fase 3 — Roadmap</div>
     </div>
   </div>
 </section>
 
-<!-- MODULES -->
-<section class="modules-section" id="modulos">
-  <div class="container">
-    <div class="section-label">Módulos</div>
-    <div class="section-title">Todo lo que necesita tu equipo<br>de <em>Customer Success.</em></div>
-    <div class="modules-grid">
-      <div class="module"><div class="module-num">01</div><div class="module-name">Onboarding Hub</div><div class="module-desc">Rutas de activación por tipo de cliente. Checklist inteligente. Modo Alfombra Roja.</div></div>
-      <div class="module"><div class="module-num">02</div><div class="module-name">Adoption Tracker</div><div class="module-desc">Health Score. Profundidad de uso por feature. Alertas de bajo engagement.</div></div>
-      <div class="module"><div class="module-num">03</div><div class="module-name">Relationship Engine</div><div class="module-desc">Advocacy, partnerización y expansión. Fidelización real. Diseñado para LATAM.</div></div>
-      <div class="module"><div class="module-num">04</div><div class="module-name">Satisfaction Hub</div><div class="module-desc">NPS, CSAT, CES. Análisis de sentimiento con contexto cultural LATAM.</div></div>
-      <div class="module"><div class="module-num">05</div><div class="module-name">KPI Dashboard</div><div class="module-desc">MRR, churn rate, NRR, time-to-value en tiempo real. Sin configuración compleja.</div></div>
-      <div class="module"><div class="module-num">06</div><div class="module-name">Churn Intelligence</div><div class="module-desc">Predicción 60–90 días antes. Las 6 reglas del Decision Engine™ activadas.</div></div>
-      <div class="module"><div class="module-num">07</div><div class="module-name">Growth Engine</div><div class="module-desc">Upsell, cross-sell y referidos sugeridos por IA. Revenue desde tu base actual.</div></div>
-      <div class="module"><div class="module-num">08</div><div class="module-name">QBR Generator</div><div class="module-desc">Reportes trimestrales automáticos por cliente. Narrativa + datos. Listos para presentar.</div></div>
-      <div class="module"><div class="module-num">09</div><div class="module-name">Nativa Academy</div><div class="module-desc">Formación CS en LATAM. Certificaciones. Comunidad de práctica activa.</div></div>
-      <div class="module"><div class="module-num">10</div><div class="module-name">Sales-CS Bridge</div><div class="module-desc">Handoff estructurado. Promesas vs entregables. Alineación desde el día 0.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BETA -->
-<section class="cta-section" id="beta">
+<!-- CTA -->
+<section class="cta-section" id="contacto">
   <div class="cta-box">
-    <h2>Sé parte de los primeros <em>5</em><br>en LATAM.</h2>
-    <p>Estamos abriendo acceso beta gratuito para 5 empresas B2B SaaS en México, Chile y Colombia. Sin costo. Con acompañamiento directo del equipo NATIVA 180.</p>
+    <h2>¿Tu empresa necesita<br>inteligencia <em>real</em> sobre sus clientes?</h2>
+    <p>Conversemos. Analizamos tu situación actual y te decimos exactamente cómo NATIVA InOps puede ayudarte — sin compromiso.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-      <a href="mailto:nativaops180@gmail.com" class="btn-primary">Solicitar acceso beta →</a>
+      <a href="mailto:nativaops180@gmail.com" class="btn-primary">Agendar llamada →</a>
     </div>
-    <div class="cta-note">Solo para empresas B2B SaaS · México · Chile · Colombia</div>
+    <div class="cta-note">B2B SaaS · México · Colombia · Chile · LATAM</div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">NATIVA <span>180</span></div>
-  <div class="footer-mantra">Understand. Connect. Grow.</div>
-  <div class="footer-built">Built for LATAM · 2025 · nativaops180@gmail.com</div>
+  <div class="footer-logo">NATIVA <span>InOps</span></div>
+  <div class="footer-email">nativaops180@gmail.com</div>
+  <div class="footer-mantra">Understand · Connect · Grow · Built for LATAM · 2025</div>
 </footer>
 
 </body>
